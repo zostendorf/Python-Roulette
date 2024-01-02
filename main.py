@@ -88,14 +88,14 @@ def spin():
         print(f"Index {spin_number} is out of range.")
 
 def stats():
-    userInput = input("Enter 'averages' or 'all', or 'back' to exit stats\n")
+    userInput = input(display_stats_controls())
     while userInput != 'back' :
         if userInput == 'all':
             with open('spin_log.csv', 'r') as csv_file:
                 stats_output = csv.reader(csv_file, delimiter=',')
                 for row in stats_output:
                     print(row)
-        if userInput == 'averages':
+        if userInput == 'avg':
             with open('spin_log.csv', 'r') as csv_file:
                 stats_output = csv.reader(csv_file, delimiter=',') 
                 total_rows = 0
@@ -159,6 +159,13 @@ def display_controls():
                         ['SPIN', 's'],
                         ['EXIT', 'e'],
                         ['Stats', 'stats']],
+                        headers=['Action', 'Command'],
+                        tablefmt="outline"))
+
+def display_stats_controls():
+    print(tabulate.tabulate([['Averages', 'avg'],
+                        ['Display all results', 'all'],
+                        ['Go back', 'back']],
                         headers=['Action', 'Command'],
                         tablefmt="outline"))
     
