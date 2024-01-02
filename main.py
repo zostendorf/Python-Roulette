@@ -154,14 +154,17 @@ def intro():
        \ \__\\ _\\ \_______\ \_______\ \_______\ \_______\  \ \__\     \ \__\ \ \_______\ 
         \|__|\|__|\|_______|\|_______|\|_______|\|_______|   \|__|      \|__|  \|_______|""")
 
+def display_controls():
+    print(tabulate.tabulate([['BET', 'b'],
+                        ['SPIN', 's'],
+                        ['EXIT', 'e'],
+                        ['Stats', 'stats']],
+                        headers=['Action', 'Command'],
+                        tablefmt="outline"))
+    
 #start game
 intro()
-userInput = input(tabulate.tabulate([['BET', 'b'],
-                                    ['SPIN', 's'],
-                                    ['EXIT', 'e'],
-                                    ['Stats', 'stats']],
-                                    headers=['Action', 'Command'],
-                                    tablefmt="outline"))
+userInput = input(display_controls())
 while userInput != 'e' :
     if userInput == 's':
         spin()
